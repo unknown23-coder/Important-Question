@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Will You Go On a Date With Me?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #ffe6f2;
+            padding-top: 80px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #ff4d88;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .yes {
+            background-color: #ff4d88;
+            color: white;
+        }
+        .no {
+            background-color: #999;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will you go on a date with me? ❤️</h1>
+
+    <button class="btn yes" onclick="alert('Yay! I can’t wait! ❤️')">Yes</button>
+    <button class="btn no" id="noBtn">No</button>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        noBtn.addEventListener('mouseover', () => {
+            noBtn.style.top = (Math.random() * window.innerHeight) + 'px';
+            noBtn.style.left = (Math.random() * window.innerWidth) + 'px';
+        });
+    </script>
+
+</body>
+</html>
