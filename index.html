@@ -13,7 +13,6 @@ body {
     background: linear-gradient(to top, #ffe6f2, #fff0f5);
 }
 
-/* Main Content */
 .container {
     position: relative;
     z-index: 10;
@@ -25,7 +24,6 @@ h1 {
     color: #ff4d88;
 }
 
-/* Buttons */
 .btn {
     padding: 15px 30px;
     font-size: 20px;
@@ -61,30 +59,23 @@ h1 {
 }
 
 @keyframes floatUp {
-    0% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-110vh);
-        opacity: 0;
-    }
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* Cute Cat */
+/* BIGGER CAT */
 .cat {
     position: fixed;
-    bottom: 20px;
+    bottom: 10px;
     right: 20px;
-    font-size: 60px;
+    font-size: 150px; /* MUCH BIGGER */
     animation: bounce 1.5s infinite;
 }
 
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    50% { transform: translateY(-20px); }
 }
-
 </style>
 </head>
 
@@ -93,21 +84,23 @@ h1 {
 <div class="container">
     <h1>Will you go on a date with me? ❤️</h1>
 
-    <button class="btn yes" onclick="alert('Yay! I can’t wait! ❤️')">Yes</button>
+    <button class="btn yes" onclick="goToNextPage()">Yes</button>
     <button class="btn no" id="noBtn">No</button>
 </div>
 
 <div class="cat">🐱</div>
 
 <script>
-// Make No button run away
+function goToNextPage() {
+    window.location.href = "yes.html";
+}
+
 const noBtn = document.getElementById('noBtn');
 noBtn.addEventListener('mouseover', () => {
     noBtn.style.top = Math.random() * window.innerHeight + 'px';
     noBtn.style.left = Math.random() * window.innerWidth + 'px';
 });
 
-// Create floating hearts
 function createHeart() {
     const heart = document.createElement('div');
     heart.classList.add('heart');
@@ -116,11 +109,8 @@ function createHeart() {
     heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
     document.body.appendChild(heart);
 
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
+    setTimeout(() => heart.remove(), 6000);
 }
-
 setInterval(createHeart, 500);
 </script>
 
