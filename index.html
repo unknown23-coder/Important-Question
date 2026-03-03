@@ -1,52 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Will You Go On a Date With Me?</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #ffe6f2;
-            padding-top: 80px;
-        }
-        h1 {
-            font-size: 2.5em;
-            color: #ff4d88;
-        }
-        .btn {
-            padding: 15px 30px;
-            font-size: 20px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin: 10px;
-        }
-        .yes {
-            background-color: #ff4d88;
-            color: white;
-        }
-        .no {
-            background-color: #999;
-            color: white;
-            position: absolute;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Will You Go On a Date With Me?</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to top, #ffe6f2, #fff0f5);
+}
+
+/* Main Content */
+.container {
+    position: relative;
+    z-index: 10;
+    margin-top: 120px;
+}
+
+h1 {
+    font-size: 2.8em;
+    color: #ff4d88;
+}
+
+/* Buttons */
+.btn {
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+}
+
+.yes {
+    background-color: #ff4d88;
+    color: white;
+}
+
+.yes:hover {
+    transform: scale(1.1);
+}
+
+.no {
+    background-color: #999;
+    color: white;
+    position: absolute;
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 30px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+
+/* Cute Cat */
+.cat {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 60px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+</style>
 </head>
+
 <body>
 
+<div class="container">
     <h1>Will you go on a date with me? ❤️</h1>
 
     <button class="btn yes" onclick="alert('Yay! I can’t wait! ❤️')">Yes</button>
     <button class="btn no" id="noBtn">No</button>
+</div>
 
-    <script>
-        const noBtn = document.getElementById('noBtn');
-        noBtn.addEventListener('mouseover', () => {
-            noBtn.style.top = (Math.random() * window.innerHeight) + 'px';
-            noBtn.style.left = (Math.random() * window.innerWidth) + 'px';
-        });
-    </script>
+<div class="cat">🐱</div>
+
+<script>
+// Make No button run away
+const noBtn = document.getElementById('noBtn');
+noBtn.addEventListener('mouseover', () => {
+    noBtn.style.top = Math.random() * window.innerHeight + 'px';
+    noBtn.style.left = Math.random() * window.innerWidth + 'px';
+});
+
+// Create floating hearts
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '💗';
+    heart.style.left = Math.random() * window.innerWidth + 'px';
+    heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 500);
+</script>
 
 </body>
 </html>
